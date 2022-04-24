@@ -1,0 +1,235 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Udonthani</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+</head>
+<body>
+  <!-- bgcolors -->
+<body style="background-color: #FEFED5; ">
+
+
+<!-- menu bar -->
+<style type="text/css">
+<!--
+A:link { text-decoration: none}
+A:active { text-decoration: none}
+A:visited { text-decoration: none}
+A:hover {text-decoration: none; color: #00769D}
+-->
+</style>
+<style>
+.menulines{
+border:1px solid #ffffff;
+}
+
+.menulines a{
+text-decoration:none;
+color:#00769D;
+}
+</style>
+
+<script language="JavaScript1.2">
+function borderize(what,color){
+what.style.borderColor=color
+}
+
+function borderize_on(e){
+if (document.all)
+source3=event.srcElement
+else if (document.getElementById)
+source3=e.target
+if (source3.className=="menulines"){
+borderize(source3,"#ff3333")
+}
+else{
+while(source3.tagName!="TABLE"){
+source3=document.getElementById? source3.parentNode : source3.parentElement
+if (source3.className=="menulines")
+borderize(source3,"#ff3333")
+}
+}
+}
+
+function borderize_off(e){
+if (document.all)
+source4=event.srcElement
+else if (document.getElementById)
+source4=e.target
+if (source4.className=="menulines")
+borderize(source4,"white")
+else{
+while(source4.tagName!="TABLE"){
+source4=document.getElementById? source4.parentNode : source4.parentElement
+if (source4.className=="menulines")
+borderize(source4,"white")
+}
+}
+}
+
+</script>
+
+<table onMouseover="borderize_on(event)" onMouseout="borderize_off(event)" align=center width=100%>
+<tr>
+	<td class="menulines" width="16%"> <center>
+        <a href="https://thitichaya1.github.io/Mywebsite_GEE2/?classId=bbbc9f61-959b-4e59-9e51-e3f6fd4febd8&assignmentId=8609b3ff-6b87-4020-afa9-c6c2a07dcc44&submissionId=b04b9d82-5760-54d8-10d6-6be1bb05a5d9" target="_blank"><font face="MS Sans Serif" size="2">Thitichaya</font></a></center></td>
+	<td class="menulines" width="16%">
+      <p align="center"><a href="https://www.museumthailand.com/en/museum/Udon-Thani-Museum" target="_blank"><font face="MS Sans Serif" size="2">Udon Thani Museum</font></a></p>
+    </td>
+	<td class="menulines" width="16%">
+      <p align="center"><a href="https://minisite.airports.go.th/udonthani/" target="_blank"><font face="MS Sans Serif" size="2">Udon Thani International Airport</font></a></p>
+    </td>
+	<td class="menulines" width="16%">
+      <p align="center"><a href="http://www.puyafoundation.com/pages/index.php" target="_blank"><font face="MS Sans Serif" size="2">the PUYA Foundation</font></a></p>
+    </td>
+	<td class="menulines" width="16%">
+      <p align="center"><a href="https://thailandtourismdirectory.go.th/th/attraction/1245" target="_blank"><font face="MS Sans Serif" size="2">Nong Prajak Public Park</font></a></p>
+    </td>
+	<td class="menulines" width="16%">
+      <p align="center"><a href="https://www.centralpattana.co.th/th/our-business/shopping-center/385/%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%A5-%E0%B8%AD%E0%B8%B8%E0%B8%94%E0%B8%A3" target="_blank"><font face="MS Sans Serif" size="2">Central Udon Thani</font></a></p>
+    </td>
+</tr>
+</table>
+
+
+<br>
+  <center>
+
+  <div id="map" style="width: 800px; height: 600px"></div>
+  <script>
+    var map = L.map('map').setView([17.405282, 102.79142],14);
+    mapLink =
+  '<a href="http://server.arcgisonline.com">Esri_WorldTopoMap</a>';
+
+  L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Udon Thani'
+    }).addTo(map)
+
+var park = L.icon({
+iconUrl: 'https://cdn-icons-png.flaticon.com/512/3104/3104941.png',
+
+iconSize: [50, 50],
+iconAnchor: [22, 94],
+popupAnchor: [-3, -76]
+});
+
+var marker = L.marker([17.415574, 102.783110],
+  {
+    icon: park,
+    draggable:true,
+    title:'สวนสาธารณะหนองประจักษ์',
+    opacity:1.5
+  }
+)
+  .addTo(map)
+  .bindPopup("<b>สวนสาธารณะหนองประจักษ์</b>")
+  .openPopup();
+
+var temple = L.icon({
+iconUrl: 'https://cdn-icons-png.flaticon.com/512/3754/3754497.png',
+
+iconSize: [50, 40],
+iconAnchor: [22, 94],
+popupAnchor: [-3, -76]
+});
+
+var marker = L.marker([17.3993741, 102.8071136],
+    {
+      icon: temple,
+      draggable:true,
+      title:'ศูนย์วัฒนธรรมไทย-จีน <br> มูลนิธิศาลเจ้าปู่ย่าอุดรธานี',
+      opacity:1.5
+    }
+  )
+    .addTo(map)
+    .bindPopup("<b>ศูนย์วัฒนธรรมไทย-จีน <br> มูลนิธิศาลเจ้าปู่ย่าอุดรธานี</b>")
+    .openPopup();
+
+var museum = L.icon({
+iconUrl: 'https://cdn-icons-png.flaticon.com/512/3936/3936816.png',
+
+iconSize: [50, 40],
+iconAnchor: [22, 94],
+popupAnchor: [-3, -76]
+});
+
+var marker = L.marker([17.4118216, 102.7816363],
+        {
+          icon: museum,
+          draggable:true,
+          title:'พิพิธภัณฑ์เมืองอุดรธานี',
+          opacity:1.5
+        }
+      )
+    .addTo(map)
+    .bindPopup("<b>พิพิธภัณฑ์เมืองอุดรธานี</b>")
+    .openPopup();
+
+var airport = L.icon({
+iconUrl: 'https://cdn-icons-png.flaticon.com/512/4353/4353032.png',
+
+iconSize: [50, 50],
+iconAnchor: [22, 94],
+popupAnchor: [-3, -76]
+});
+
+var marker = L.marker([17.3863742, 102.7754540],
+            {
+              icon: airport,
+              draggable:true,
+              title:'ท่าอากาศยานนานาชาติอุดรธานีี',
+              opacity:1.5
+            }
+          )
+    .addTo(map)
+    .bindPopup("<b>ท่าอากาศยานนานาชาติอุดรธานี</b>")
+    .openPopup();
+
+var mall = L.icon({
+iconUrl: 'https://cdn-icons.flaticon.com/png/512/998/premium/998634.png?token=exp=1650806092~hmac=27567dc4f7225c1b51c4b35f753c2ce7',
+
+iconSize: [50, 40],
+iconAnchor: [22, 94],
+popupAnchor: [-3, -76]
+});
+
+var marker = L.marker([17.4063927, 102.8002013],
+                {
+                  icon: mall,
+                  draggable:true,
+                  title:'เซ็นทรัลพลาซาอุดรธานี',
+                  opacity:1.5
+                }
+              )
+    .addTo(map)
+    .bindPopup("<b>เซ็นทรัลพลาซาอุดรธานี</b>")
+    .openPopup();
+
+// Click map show lat,lon
+function onMapClick(e) {
+        alert("You clicked the map at " + e.latlng);
+    }
+
+map.on('click', onMapClick);
+
+    var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
+
+map.on('click', onMapClick);
+
+
+
+  </script>
+  </center>
+</body>
+</html>
